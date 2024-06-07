@@ -6,6 +6,8 @@ const searchForm = document.querySelector("[data-searchForm]");
 const loadingScrren = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
 const grantAccessButton = document.querySelector("[data-GrantAccess]");
+const dateElement = document.querySelector('[data-date]');
+const timeElement = document.querySelector('[data-time]');
 
 let currentTab = userTab;
 const API_KEY = "db2370419529b294811d3aa712a9903d";
@@ -51,7 +53,7 @@ function getfromSessionStorage(){
 }
 
 async function fetchUserWeatherInfo(coordinates){
-    const {lat,lon} = coordinates;
+    const {lat, lon} = coordinates;
     grantAccessContainer.classList.remove("active");
     loadingScrren.classList.add("active");
 
@@ -60,6 +62,7 @@ async function fetchUserWeatherInfo(coordinates){
             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
         );
         const data = await response.json();
+        console.log(data);
 
         loadingScrren.classList.remove("active");
         userInfoContainer.classList.add("active");
@@ -84,10 +87,12 @@ function renderWeatherInfo(weatherInfo){
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     desc.innerText = weatherInfo?.weather?.[0]?.description;
     weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temp.innerText = `${parseInt(weatherInfo?.main?.temp-273.15).toFixed(0)}°C`;
+    temp.innerText = `${parseInt(weatherInfo?.main?.temp - 273.15).toFixed(0)}°C`;
     windSpeed.innerText = `${weatherInfo?.wind?.speed}m/s`;
     humidity.innerText = `${weatherInfo?.main?.humidity}%`;
     cloudiness.innerText = `${weatherInfo?.clouds?.all}%`;
+
+    updateDateTime();
 }
 
 function getLocation(){
@@ -141,6 +146,18 @@ async function fetchSearchWeatherInfo(city){
     catch(err){
         alert("Try again later");
     }
-
 }
 
+function updateDateTime() {
+    const now = new Date();
+    const date = now.toLocaleDateString();
+    const time = now.toLocaleTimeString();
+    console.log(date);
+    console.log(time);
+
+    dateElement.innerText = date;
+    timeElement.innerText = time;
+}
+
+setInterval(updateDateTime, 1000);
+updateDateTime();

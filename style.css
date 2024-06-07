@@ -1,35 +1,40 @@
-.tab.current-tab{
+.tab.current-tab {
     background-color: rgba(219, 226, 239, 0.5);
     border-radius: 4px;
     cursor: pointer;
 }
-*,*::before,*::after{
+
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Merriweather Sans', sans-serif;
     overflow-x: hidden;
-} 
-:root{
+}
+
+:root {
     --colorDark1: #112D4E;
     --colorDark2: #3F72AF;
     --colorLight1: #DBE2EF;
     --colorLight2: #F9F7F7;
 }
-.wrapper{
+
+.wrapper {
     width: 100vw;
     height: 100vh;
     color: var(--colorLight2);
     background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
 }
-h1{
+
+h1 {
     text-align: center;
     text-transform: uppercase;
     padding-top: 20px;
     font-weight: bold;
     letter-spacing: 0.25rem;
 }
-.tab-container{
+
+.tab-container {
     width: 90%;
     max-width: 550px;
     margin: 0 auto;
@@ -37,16 +42,19 @@ h1{
     margin-top: 4rem;
     justify-content: space-between;
 }
-.tab{
+
+.tab {
     cursor: pointer;
     font-size: 0.875rem;
     letter-spacing: 1.75px;
     padding: 5px 8px;
 }
-.weather-container{
+
+.weather-container {
     margin-block: 4rem;
 }
-.btn{
+
+.btn {
     all: unset;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -55,82 +63,104 @@ h1{
     cursor: pointer;
     padding: 10px 30px;
     margin: 10px;
+    color: white;
 }
-.sub-container{
+
+.sub-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.grant-location-container{
+
+.grant-location-container {
     display: none;
 }
-.grant-location-container.active{
+
+.grant-location-container.active {
     display: flex;
 }
-.grant-location-container img{
+
+.grant-location-container img {
     margin-bottom: 2rem;
 }
-.grant-location-container p:first-of-type{
+
+.grant-location-container p:first-of-type {
     font-size: 1.75rem;
     font-weight: 600;
     text-transform: capitalize;
 }
-.grant-location-container p:last-of-type{
+
+.grant-location-container p:last-of-type {
     font-size: 0.85rem;
     font-weight: 500;
     margin-top: 0.75rem;
     margin-bottom: 1.75rem;
     letter-spacing: 0.75px;
 }
-.loading-container{
+
+.loading-container {
     display: none;
 }
-.loading-container.active{
+
+.loading-container.active {
     display: flex;
 }
-.loading-container p{
+
+.loading-container p {
     text-transform: uppercase;
 }
-.user-info-container{
+
+.user-info-container {
     display: none;
 }
-.user-info-container.active{
+
+.user-info-container.active {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.user-info-container p{
+
+.user-info-container p {
     font-size: 1.5rem;
     font-weight: 200;
 }
-.user-info-container img{
+
+.user-info-container img {
     width: 90px;
     height: 90px;
 }
-.name{
+
+.name {
     display: flex;
     align-items: center;
     gap: 0 0.5rem;
     margin-bottom: 1rem;
 }
-.name p{
+
+.name p {
     font-size: 2rem;
 }
-.name img{
+
+.name img {
     width: 25px;
     height: 20px;
 }
 
-.user-info-container p[data-temp]{
+.user-info-container p[data-temp] {
     font-size: 2.75rem;
     font-weight: 700;
 }
-.parameter-container{
+
+.parameter-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px 20px;
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
 }
-.parameter{
+
+.parameter {
     display: flex;
     width: 30%;
     max-width: 1000px;
@@ -143,20 +173,24 @@ h1{
     justify-content: center;
     align-items: center;
 }
-.parameter p:first-of-type{
+
+.parameter p:first-of-type {
     font-size: 1.15rem;
     font-weight: 600;
     text-transform: uppercase;
 }
-.parameter img{
+
+.parameter img {
     width: 50px;
     height: 50px;
 }
-.parameter p:last-of-type{
+
+.parameter p:last-of-type {
     font-size: 1rem;
     font-weight: 200;
 }
-.form-container{
+
+.form-container {
     display: none;
     width: 90%;
     max-width: 550px;
@@ -166,12 +200,14 @@ h1{
     gap: 0 10px;
     margin-bottom: 3rem;
 }
-.form-container.active{
+
+.form-container.active {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form-container input{
+
+.form-container input {
     all: unset;
     width: calc(100% - 20px);
     height: 40px;
@@ -179,13 +215,16 @@ h1{
     background-color: rgba(219, 226, 239, 0.5);
     border-radius: 10px;
 }
-.form-container input::placeholder{
+
+.form-container input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
-.form-container input:focus{
+
+.form-container input:focus {
     outline: 3px solid rgba(255, 255, 255, 0.7);
 }
-.form-container .btn{
+
+.form-container .btn {
     padding: unset;
     width: 40px;
     height: 40px;
@@ -193,4 +232,118 @@ h1{
     align-items: center;
     justify-content: center;
     border-radius: 100%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .tab-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .tab {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    .weather-container {
+        margin-block: 2rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        margin: 5px;
+    }
+
+    .user-info-container p {
+        font-size: 1.25rem;
+    }
+
+    .user-info-container img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .name p {
+        font-size: 1.5rem;
+    }
+
+    .name img {
+        width: 20px;
+        height: 16px;
+    }
+
+    .user-info-container p[data-temp] {
+        font-size: 2rem;
+    }
+
+    .parameter {
+        width: 45%;
+    }
+
+    .parameter p:first-of-type {
+        font-size: 1rem;
+    }
+
+    .parameter p:last-of-type {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        padding-top: 10px;
+        letter-spacing: 0.1rem;
+    }
+
+    .tab {
+        font-size: 0.875rem;
+        padding: 8px 10px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        margin: 5px;
+    }
+
+    .user-info-container p {
+        font-size: 1rem;
+    }
+
+    .user-info-container img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .name p {
+        font-size: 1.25rem;
+    }
+
+    .name img {
+        width: 18px;
+        height: 14px;
+    }
+
+    .user-info-container p[data-temp] {
+        font-size: 1.75rem;
+    }
+
+    .parameter {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .parameter p:first-of-type {
+        font-size: 0.875rem;
+    }
+
+    .parameter p:last-of-type {
+        font-size: 0.75rem;
+    }
+
+    .form-container input {
+        width: 100%;
+    }
 }
