@@ -234,7 +234,6 @@ h1 {
     border-radius: 100%;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .tab-container {
         flex-direction: column;
